@@ -53,7 +53,7 @@ public class User {
     /**
      *用户组
      */
-    @TableField("'group'")
+    @TableField("`group`")
     private String group;
     /**
      * 用户登录验证码
