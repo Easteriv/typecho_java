@@ -1,10 +1,13 @@
 package com.github.typecho_java.service.impl;
 
+import com.github.typecho_java.constant.CommonConstant;
+import com.github.typecho_java.constant.dbConstant.MetasConstant;
 import com.github.typecho_java.dao.Metas;
 import com.github.typecho_java.dto.CategoryDTO;
 import com.github.typecho_java.service.CategoryService;
 import com.github.typecho_java.service.MetaService;
 import com.github.typecho_java.util.CategoryTreeUtil;
+import com.github.typecho_java.util.ConvertUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,32 +26,27 @@ public class CategoryServiceImpl implements CategoryService {
     private MetaService metaService;
 
     /**
-     * 查找所有的项目
+     * 查找所有的类目List
      *
      * @return 成功：返回类目List 失败：空集合
      */
     @Override
     public List<CategoryDTO> findAllCategory() {
-        List<Metas> metas = metaService.findAllCategory();
+        List<Metas> metas = metaService.queryMetasByType(CommonConstant.DB_CATEGORY_VALUE);
         if (CollectionUtils.isNotEmpty(metas)) {
-            List<CategoryDTO> list = convert2Category(metas);
-            return CategoryTreeUtil.formattedTree(list);
+           return ConvertUtil.meta2Category(metas);
         }
         return Collections.emptyList();
     }
 
+
     /**
-     * metas转换为category集合
-     * @param metas 元数据
-     * @return 类目集合
+     * 查找所有的类目树
+     * @return 成功：返回类目List 失败：空集合
      */
-    private List<CategoryDTO> convert2Category(List<Metas> metas) {
-        List<CategoryDTO> list = new ArrayList<>();
-        for (Metas meta : metas) {
-            CategoryDTO categoryDTO = CategoryDTO.builder().cid(meta.getMid()).name(meta.getName()).parentId(meta.getParent())
-                    .slug(meta.getSlug()).order(meta.getOrder()).build();
-            list.add(categoryDTO);
-        }
-        return list;
+    @Override
+    public List<CategoryDTO> findCategoryTreeList() {
+        List<CategoryDTO> list = findAllCategory();
+        return CategoryTreeUtil.formattedTree(list);
     }
 }

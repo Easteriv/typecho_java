@@ -9,8 +9,14 @@ import java.util.List;
  */
 public interface CategoryService {
     /**
-     * 查找所有的项目
+     * 查找所有的类目List
      * @return 成功：返回类目List 失败：空集合
      */
     List<CategoryDTO>findAllCategory();
+
+    /**
+     * 查找所有的类目树
+     * @return 成功：返回类目List 失败：空集合
+     */
+    List<CategoryDTO>findCategoryTreeList();
 }

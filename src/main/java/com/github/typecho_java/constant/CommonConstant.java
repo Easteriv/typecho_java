@@ -6,4 +6,5 @@ package com.github.typecho_java.constant;
  **/
 public class CommonConstant {
     public static final String DB_CATEGORY_VALUE = "category";
+    public static final String DB_TAG_VALUE = "tag";
 }

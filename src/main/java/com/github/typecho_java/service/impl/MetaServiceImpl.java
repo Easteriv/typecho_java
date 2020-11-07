@@ -22,11 +22,12 @@ public class MetaServiceImpl implements MetaService {
 
     /**
      * 查找所有的项目
-     * @return 成功：返回类目List 失败：空集合
+     * @param type category:类目 tag:标签
+     * @return @return 成功：返回类目List 失败：空集合
      */
     @Override
-    public List<Metas> findAllCategory() {
+    public List<Metas> queryMetasByType(String type) {
         return metasMapper.selectList(new QueryWrapper<Metas>().eq(MetasConstant.TYPE_FIELD
-                , CommonConstant.DB_CATEGORY_VALUE).orderByAsc(MetasConstant.ORDER_FIELD));
+                , type).orderByAsc(MetasConstant.ORDER_FIELD));
     }
 }

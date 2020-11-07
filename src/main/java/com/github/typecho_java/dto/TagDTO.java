@@ -1,5 +1,6 @@
 package com.github.typecho_java.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date 2020/11/7 11:27 下午
  **/
 @Data
+@Builder
 public class TagDTO {
     /**
      * 标签ID

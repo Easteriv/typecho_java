@@ -10,7 +10,8 @@ import java.util.List;
 public interface MetaService {
     /**
      * 查找所有的项目
-     * @return 成功：返回类目List 失败：空集合
+     * @param type category:类目 tag:标签
+     * @return @return 成功：返回类目List 失败：空集合
      */
-    List<Metas> findAllCategory();
+    List<Metas> queryMetasByType(String type);
 }
