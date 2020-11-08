@@ -1,7 +1,9 @@
 package com.github.typecho_java.util;
 
 import com.github.typecho_java.dao.Metas;
+import com.github.typecho_java.dao.PostContent;
 import com.github.typecho_java.dto.CategoryDTO;
+import com.github.typecho_java.dto.PostDTO;
 import com.github.typecho_java.dto.TagDTO;
 
 import java.util.ArrayList;

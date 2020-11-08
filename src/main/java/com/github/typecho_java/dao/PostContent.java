@@ -29,11 +29,11 @@ public class PostContent {
     /**
      * 内容生成时的GMT unix时间戳
      */
-    private Integer created;
+    private Long created;
     /**
      * 内容更改时的GMT unix时间戳
      */
-    private Integer modified;
+    private Long modified;
     /**
      * 内容文字
      */
@@ -41,6 +41,7 @@ public class PostContent {
     /**
      * 	排序
      */
+    @TableField("`order`")
     private Integer order;
     /**
      * 	内容所属用户id
@@ -83,4 +84,6 @@ public class PostContent {
      */
     @TableField(value = "allowFeed")
     private String allowFeed;
+
+    private Integer views;
 }
